@@ -173,9 +173,6 @@ footer{
 const data = {
 
 sparsh:{
-
-/* ===== गद्य खंड (Prose) ===== */
-
 "1. बड़े भाई साहब – प्रेमचंद":"pdf/sparsh-1.pdf",
 "2. डायरी का एक पन्ना – सीताराम सेकसरिया":"pdf/sparsh-2.pdf",
 "3. तताँरा-वामीरो कथा – लीलाधर मंडलोई":"pdf/sparsh-3.pdf",
@@ -183,9 +180,6 @@ sparsh:{
 "5. अब कहाँ दूसरे के दुख से दुखी होने वाले – नरेन्द्र कोहली":"pdf/sparsh-5.pdf",
 "6. पतझर में टूटी पत्तियाँ – रवीन्द्र कालिया":"pdf/sparsh-6.pdf",
 "7. कारतूस – जयशंकर प्रसाद":"pdf/sparsh-7.pdf",
-
-/* ===== पद्य खंड (Poetry) ===== */
-
 "8. साखी – कबीर":"pdf/sparsh-8.pdf",
 "9. मीरा के पद – मीराबाई":"pdf/sparsh-9.pdf",
 "10. मनुष्यता – मैथिलीशरण गुप्त":"pdf/sparsh-10.pdf",
@@ -193,10 +187,7 @@ sparsh:{
 "12. तोप – सर्वेश्वर दयाल सक्सेना":"pdf/sparsh-12.pdf",
 "13. कर चले हम फ़िदा – कैफ़ी आज़मी":"pdf/sparsh-13.pdf",
 "14. आत्मत्राण – जयशंकर प्रसाद":"pdf/sparsh-14.pdf"
-
-
 },
-
 
 sanchayan:{
 "हरिहर काका":"pdf/sanchayan-1.pdf",
@@ -205,23 +196,20 @@ sanchayan:{
 },
 
 grammar:{
-
-"पदबंध (Yet not uploaded)":"pdf/grammar-phrases.pdf",
-"रचना के आधार पर वाक्य रूपांतरण (Yet not uploaded)":"pdf/grammar-sentence-transformation.pdf",
-"समास (Yet not uploaded)":"pdf/grammar-compound-words.pdf",
-"मुहावरे (Yet not uploaded)":"pdf/grammar-idioms.pdf"
-
+"पदबंध":"pdf/grammar-phrases.pdf",
+"रचना के आधार पर वाक्य रूपांतरण":"pdf/grammar-sentence-transformation.pdf",
+"समास":"pdf/grammar-compound-words.pdf",
+"मुहावरे":"pdf/grammar-idioms.pdf"
 },
 
 samplepapers:{
 "Nodia 30 Sample Paper Set":"pdf/nodia-25-26.pdf",
-"CBSE Sample Paper 2026 (Yet not uploaded)":"pdf/sample-2026.pdf",
-"CBSE Sample Paper 2025 (Yet not uploaded)":"pdf/sample-2025.pdf",
-"CBSE Sample Paper 2024 (Yet not uploaded)":"pdf/sample-2024.pdf",
-"Practice Paper 1 (Yet not uploaded)":"pdf/practice-1.pdf",
-"Practice Paper 2 (Yet not uploaded)":"pdf/practice-2.pdf"
+"CBSE Sample Paper 2026":"pdf/sample-2026.pdf",
+"CBSE Sample Paper 2025":"pdf/sample-2025.pdf",
+"CBSE Sample Paper 2024":"pdf/sample-2024.pdf",
+"Practice Paper 1":"pdf/practice-1.pdf",
+"Practice Paper 2":"pdf/practice-2.pdf"
 }
-
 
 }
 
@@ -250,18 +238,20 @@ chapterBox.appendChild(btn);
 function showNotes(ch,section){
 let pdfPath=data[section][ch];
 
-let isMobile = window.innerWidth < 900;
+let isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-if(isMobile){
+if(isTouchDevice){
+  // 📱 Phone / iPad Version (No iframe issue)
   notesBox.innerHTML=`
   <h2>${ch}</h2>
   <h4>${section.toUpperCase()}</h4>
   <br>
   <a class="btn" href="${pdfPath}" target="_blank">📖 Open PDF</a>
   <br><br>
-  <a class="btn downloadBtn" href="${pdfPath}" download>⬇ Download Full PDF</a>
+  <a class="btn downloadBtn" href="${pdfPath}" download>⬇ Download Notes</a>
   `;
 }else{
+  // 💻 Laptop / Desktop Version
   notesBox.innerHTML=`
   <h2>${ch}</h2>
   <h4>${section.toUpperCase()}</h4>
@@ -273,11 +263,10 @@ if(isMobile){
   </div>
 
   <br>
-  <a class="btn downloadBtn" href="${pdfPath}" download>⬇ Download Full PDF</a>
+  <a class="btn downloadBtn" href="${pdfPath}" download>⬇ Download Notes</a>
   `;
 }
 }
-
 
 function toggleFullscreen(){
 let elem=document.getElementById("pdfContainer");
@@ -314,6 +303,7 @@ loadChapters();
 
 </script>
 
+
 <footer>
 <h3>📞 Contact</h3>
 <p>Email: rishabhvachheta@gmail.com</p>
@@ -325,4 +315,5 @@ loadChapters();
 
 </body>
 </html>
+
 
