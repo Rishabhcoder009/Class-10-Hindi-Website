@@ -238,34 +238,26 @@ chapterBox.appendChild(btn);
 function showNotes(ch,section){
 let pdfPath=data[section][ch];
 
-let isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+notesBox.innerHTML=`
+<h2>${ch}</h2>
+<h4>${section.toUpperCase()}</h4>
 
-if(isTouchDevice){
-  // 📱 Phone / iPad Version (No iframe issue)
-  notesBox.innerHTML=`
-  <h2>${ch}</h2>
-  <h4>${section.toUpperCase()}</h4>
-  <br>
-  <a class="btn" href="${pdfPath}" target="_blank">📖 Open PDF</a>
-  <br><br>
-  <a class="btn downloadBtn" href="${pdfPath}" download>⬇ Download Notes</a>
-  `;
-}else{
-  // 💻 Laptop / Desktop Version
-  notesBox.innerHTML=`
-  <h2>${ch}</h2>
-  <h4>${section.toUpperCase()}</h4>
+<!-- Preview Section -->
+<div id="pdfContainer">
+<br>
+<iframe src="${pdfPath}#toolbar=0&navpanes=0&scrollbar=1"
+width="100%" height="500px"></iframe>
+</div>
 
-  <div id="pdfContainer">
-  <button class="btn" onclick="toggleFullscreen()">📄 Full Screen</button>
-  <br><br>
-  <iframe src="${pdfPath}" width="100%" height="600px"></iframe>
-  </div>
+<br>
 
-  <br>
-  <a class="btn downloadBtn" href="${pdfPath}" download>⬇ Download Notes</a>
-  `;
+<!-- Buttons -->
+<a class="btn" href="${pdfPath}" target="_blank">📖 View Full Notes</a>
+&nbsp;&nbsp;
+<a class="btn downloadBtn" href="${pdfPath}" download>⬇ Download Notes</a>
+`;
 }
+
 }
 
 function toggleFullscreen(){
@@ -315,5 +307,6 @@ loadChapters();
 
 </body>
 </html>
+
 
 
