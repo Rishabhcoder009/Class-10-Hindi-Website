@@ -13,8 +13,6 @@
 body{background:#f4f6fb;color:#222;transition:.3s}
 .dark{background:#0f172a;color:#e5e7eb}
 
-/* HEADER */
-
 header{
 background:linear-gradient(120deg,#ff512f,#dd2476);
 color:white;
@@ -23,8 +21,6 @@ padding:25px;
 font-size:26px;
 font-weight:bold;
 }
-
-/* TOPBAR */
 
 .topbar{
 display:flex;
@@ -50,10 +46,9 @@ border-radius:10px;
 cursor:pointer;
 background:#dd2476;
 color:white;
-font-weight:bold
+font-weight:bold;
+margin-top:5px;
 }
-
-/* TABS */
 
 .tabs{
 display:flex;
@@ -81,8 +76,6 @@ color:white
 background:#1e293b;
 color:white
 }
-
-/* LAYOUT */
 
 .container{
 display:grid;
@@ -114,7 +107,6 @@ border:none;
 background:#ffe4ec;
 border-radius:8px;
 cursor:pointer;
-text-align:left;
 font-weight:600
 }
 
@@ -123,31 +115,36 @@ background:#334155;
 color:white
 }
 
-iframe{
+embed{
 width:100%;
-height:600px;
-border:none
+height:65vh;
+border-radius:10px;
 }
 
-/* MOBILE */
+.fullscreenPDF{
+position:fixed;
+top:0;
+left:0;
+width:100vw;
+height:100vh;
+background:white;
+z-index:9999;
+padding:10px;
+}
+
+.fullscreenPDF embed{
+height:90vh;
+}
 
 @media(max-width:900px){
 
-.container{
-grid-template-columns:1fr
-}
+.container{grid-template-columns:1fr}
 
-.searchBox{
-width:100%
-}
+.searchBox{width:100%}
 
-iframe{
-height:500px
-}
+embed{height:60vh}
 
 }
-
-/* FOOTER */
 
 footer{
 background:#111;
@@ -168,9 +165,7 @@ margin-top:30px
 
 <input id="search" class="searchBox" placeholder="Search chapter">
 
-<button class="btn" onclick="toggleDark()">
-Theme
-</button>
+<button class="btn" onclick="toggleDark()">Theme</button>
 
 </div>
 
@@ -192,7 +187,6 @@ SAMPLE PAPERS
 </div>
 
 
-
 <div class="container">
 
 <div class="chapterBox" id="chapters"></div>
@@ -207,40 +201,22 @@ Select chapter
 </div>
 
 
-
 <script>
 
-const data = {
+const data={
 
 sparsh:{
-
-"1. बड़े भाई साहब – प्रेमचंद":"pdf/sparsh-1.pdf",
-"2. डायरी का एक पन्ना – सीताराम सेकसरिया":"pdf/sparsh-2.pdf",
-"3. तताँरा-वामीरो कथा – लीलाधर मंडलोई":"pdf/sparsh-3.pdf",
-"4. तीसरी कसम के शिल्पकार शैलेन्द्र":"pdf/sparsh-4.pdf",
-"5. अब कहाँ दूसरे के दुख से दुखी होने वाले":"pdf/sparsh-5.pdf",
-"6. पतझर में टूटी पत्तियाँ":"pdf/sparsh-6.pdf",
-"7. कारतूस":"pdf/sparsh-7.pdf",
-
-"8. साखी – कबीर":"pdf/sparsh-8.pdf",
-"9. मीरा के पद":"pdf/sparsh-9.pdf",
-"10. मनुष्यता":"pdf/sparsh-10.pdf",
-"11. पर्वत प्रदेश में पावस":"pdf/sparsh-11.pdf",
-"12. तोप":"pdf/sparsh-12.pdf",
-"13. कर चले हम फ़िदा":"pdf/sparsh-13.pdf",
-"14. आत्मत्राण":"pdf/sparsh-14.pdf"
-
+"1. बड़े भाई साहब":"pdf/sparsh-1.pdf",
+"2. डायरी का एक पन्ना":"pdf/sparsh-2.pdf",
+"3. तताँरा-वामीरो":"pdf/sparsh-3.pdf"
 },
 
 sanchayan:{
-"हरिहर काका":"pdf/sanchayan-1.pdf",
-"सपनों के से दिन":"pdf/sanchayan-2.pdf",
-"टोपी शुक्ला":"pdf/sanchayan-3.pdf"
+"हरिहर काका":"pdf/sanchayan-1.pdf"
 },
 
 samplepapers:{
-"Nodia Sample":"pdf/nodia-25-26.pdf",
-"Sample 2026":"pdf/sample-2026.pdf"
+"Sample Paper":"pdf/sample.pdf"
 }
 
 }
@@ -286,7 +262,7 @@ chapterBox.appendChild(btn)
 }
 
 
-/* ✅ MOBILE SAFE PDF FUNCTION */
+/* SAFE PDF VIEWER */
 
 function showNotes(ch,section){
 
@@ -300,14 +276,19 @@ title.innerText=ch
 let container=document.createElement("div")
 container.id="pdfContainer"
 
+let fullBtn=document.createElement("button")
+fullBtn.className="btn"
+fullBtn.innerText="Full Screen"
+fullBtn.onclick=toggleFullscreen
+
+let br=document.createElement("br")
+let br2=document.createElement("br")
+
 let embed=document.createElement("embed")
 embed.src=pdf
 embed.type="application/pdf"
 embed.style.width="100%"
 embed.style.height="65vh"
-
-let br=document.createElement("br")
-let br2=document.createElement("br")
 
 let download=document.createElement("a")
 download.className="btn"
@@ -315,54 +296,63 @@ download.href=pdf
 download.target="_blank"
 download.innerText="Open / Download PDF"
 
+container.appendChild(fullBtn)
+container.appendChild(br)
+container.appendChild(br2)
 container.appendChild(embed)
 
 notesBox.appendChild(title)
 notesBox.appendChild(container)
-notesBox.appendChild(br)
+notesBox.appendChild(document.createElement("br"))
 notesBox.appendChild(download)
 
 }
 
 
+function toggleFullscreen(){
+
+let e=document.getElementById("pdfContainer")
+
+if(e){
+e.classList.toggle("fullscreenPDF")
+}
+
+}
+
+
 function toggleDark(){
-
 document.body.classList.toggle("dark")
-
 }
 
 loadChapters()
 
 </script>
 
-document.addEventListener("contextmenu",e=>e.preventDefault());
 
-document.addEventListener("keydown",function(e){
+<script>
 
-if(e.key==="F12") e.preventDefault();
+document.addEventListener("contextmenu",e=>e.preventDefault())
 
-if(e.ctrlKey&&e.shiftKey&&e.key==="I") e.preventDefault();
+document.addEventListener("keydown",e=>{
 
-if(e.ctrlKey&&e.shiftKey&&e.key==="C") e.preventDefault();
+if(e.key==="F12") e.preventDefault()
+if(e.ctrlKey&&e.shiftKey&&e.key==="I") e.preventDefault()
+if(e.ctrlKey&&e.key==="U") e.preventDefault()
 
-if(e.ctrlKey&&e.shiftKey&&e.key==="J") e.preventDefault();
-
-if(e.ctrlKey&&e.key==="U") e.preventDefault();
-
-});
+})
 
 </script>
 
 
-
 <footer>
-<h3>📞 Contact</h3>
+
+<h3>Contact</h3>
+
 <p>Email: rishabhvachheta@gmail.com</p>
-<p>Phone: +91 6358849299</p>
-<br>
-<p>© 2026 Hindi Course B Notes Hub</p>
-<p>Made with ❤️ by Rishabh Vachheta</p>
+
+<p>© 2026 Hindi Notes Hub</p>
+
 </footer>
+
 </body>
 </html>
-
