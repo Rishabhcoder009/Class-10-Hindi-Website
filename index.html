@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Class 10 Hindi Course B Notes Hub</title>
 
 <style>
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial,sans-serif}
 
-body{background:#f4f6fb;color:#222;transition:0.3s}
+body{background:#f4f6fb;color:#222;transition:.3s}
 .dark{background:#0f172a;color:#e5e7eb}
 
 /* HEADER */
@@ -23,7 +24,7 @@ font-size:26px;
 font-weight:bold;
 }
 
-/* TOP BAR */
+/* TOPBAR */
 
 .topbar{
 display:flex;
@@ -39,8 +40,7 @@ padding:12px;
 width:260px;
 border-radius:10px;
 border:none;
-box-shadow:0 3px 10px rgba(0,0,0,0.2);
-font-size:15px;
+box-shadow:0 3px 10px rgba(0,0,0,.2)
 }
 
 .btn{
@@ -50,13 +50,10 @@ border-radius:10px;
 cursor:pointer;
 background:#dd2476;
 color:white;
-font-weight:bold;
+font-weight:bold
 }
 
-.themeBtn{
-font-size:16px;
-padding:12px 20px;
-}
+.themeBtn{font-size:16px}
 
 /* TABS */
 
@@ -65,7 +62,7 @@ display:flex;
 justify-content:center;
 flex-wrap:wrap;
 gap:15px;
-margin:10px;
+margin:10px
 }
 
 .tab{
@@ -73,18 +70,18 @@ padding:12px 22px;
 background:white;
 border-radius:25px;
 cursor:pointer;
-box-shadow:0 4px 12px rgba(0,0,0,0.2);
-font-weight:bold;
+box-shadow:0 4px 12px rgba(0,0,0,.2);
+font-weight:bold
 }
 
 .activeTab{
 background:#dd2476;
-color:white;
+color:white
 }
 
 .dark .tab{
 background:#1e293b;
-color:white;
+color:white
 }
 
 /* LAYOUT */
@@ -93,21 +90,22 @@ color:white;
 display:grid;
 grid-template-columns:300px 1fr;
 gap:20px;
-padding:20px;
+padding:20px
 }
 
 .chapterBox,.notes{
 background:white;
 border-radius:12px;
 padding:20px;
-box-shadow:0 5px 20px rgba(0,0,0,0.1);
+box-shadow:0 5px 20px rgba(0,0,0,.1);
 height:70vh;
-overflow-y:auto;
+overflow:auto
 }
 
-.dark .chapterBox,.dark .notes{
+.dark .chapterBox,
+.dark .notes{
 background:#1e293b;
-color:white;
+color:white
 }
 
 .chapterBtn{
@@ -120,12 +118,12 @@ background:#ffe4ec;
 border-radius:8px;
 cursor:pointer;
 text-align:left;
-font-weight:600;
+font-weight:600
 }
 
 .dark .chapterBtn{
 background:#334155;
-color:white;
+color:white
 }
 
 /* PDF */
@@ -133,18 +131,24 @@ color:white;
 iframe{
 width:100%;
 height:600px;
-border:none;
+border:none
 }
 
 /* MOBILE FIX */
 
 @media(max-width:900px){
 
-.container{grid-template-columns:1fr}
+.container{
+grid-template-columns:1fr
+}
 
-.searchBox{width:100%}
+.searchBox{
+width:100%
+}
 
-.notes iframe{display:none}
+iframe{
+height:500px
+}
 
 }
 
@@ -155,7 +159,7 @@ background:#111;
 color:#ddd;
 text-align:center;
 padding:25px;
-margin-top:30px;
+margin-top:30px
 }
 
 </style>
@@ -167,9 +171,11 @@ margin-top:30px;
 
 <div class="topbar">
 
-<input type="text" id="search" class="searchBox" placeholder="Search chapter...">
+<input id="search" class="searchBox" placeholder="Search chapter">
 
-<button class="btn themeBtn" onclick="toggleDark()">🌙 Theme</button>
+<button class="btn themeBtn" onclick="toggleDark()">
+🌙 Theme
+</button>
 
 </div>
 
@@ -197,11 +203,12 @@ SAMPLE PAPERS
 <div class="chapterBox" id="chapters"></div>
 
 <div class="notes" id="notes">
-<h2>Welcome 👋</h2>
-<p>Select a chapter</p>
+<h2>Welcome</h2>
+Select chapter
 </div>
 
 </div>
+
 
 
 <script>
@@ -249,6 +256,7 @@ samplepapers:{
 "Practice Paper 1 (Yet not uploaded)":"pdf/practice-1.pdf",
 "Practice Paper 2 (Yet not uploaded)":"pdf/practice-2.pdf"
 }
+
 }
 
 let currentSection="sparsh"
@@ -293,7 +301,7 @@ function showNotes(ch,section){
 
 let pdf=data[section][ch]
 
-let mobile=window.innerWidth<900
+let mobile=window.innerWidth<700
 
 if(mobile){
 
@@ -345,7 +353,7 @@ loadChapters()
 
 
 
-<!-- SAFE INSPECT DISABLE -->
+<!-- SAFE INSPECT BLOCK -->
 
 <script>
 
@@ -386,4 +394,3 @@ document.addEventListener("dragstart",e=>e.preventDefault());
 
 </body>
 </html>
-
