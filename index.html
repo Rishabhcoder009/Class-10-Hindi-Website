@@ -6,140 +6,180 @@
 <title>Class 10 Hindi Course B Notes Hub</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial,sans-serif}
 
-body{background:#f4f6fb;color:#222;transition:0.3s}
-.dark{background:#0f172a;color:#e5e7eb}
-
-/* Header */
-header{
-  background:linear-gradient(120deg,#ff512f,#dd2476);
-  color:white;
-  text-align:center;
-  padding:20px;
-  font-size:22px;
-  font-weight:bold;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,Arial,sans-serif
 }
 
-/* Topbar */
+body{
+background:#f4f6fb;
+color:#222;
+transition:0.3s
+}
+
+.dark{
+background:#0f172a;
+color:#e5e7eb
+}
+
+header{
+background:linear-gradient(120deg,#ff512f,#dd2476);
+color:white;
+text-align:center;
+padding:25px;
+font-size:26px;
+font-weight:bold;
+}
+
 .topbar{
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:10px;
-  padding:15px;
-  align-items:center;
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:10px;
+padding:15px 20px;
+align-items:center
 }
 
 .searchBox{
-  padding:10px;
-  width:250px;
-  border-radius:8px;
-  border:none;
-  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+padding:12px;
+width:260px;
+border-radius:10px;
+border:none;
+box-shadow:0 3px 10px rgba(0,0,0,0.2);
+font-size:15px;
 }
 
 .btn{
-  padding:10px 15px;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-  background:#dd2476;
-  color:white;
-  font-weight:bold;
+padding:12px 18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+background:#dd2476;
+color:white;
+font-weight:bold;
 }
 
-/* Tabs */
+.themeBtn{
+font-size:16px;
+padding:12px 20px;
+}
+
 .tabs{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:15px;
-  margin:10px;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:15px;
+margin:10px;
 }
 
 .tab{
-  padding:10px 20px;
-  background:white;
-  border-radius:25px;
-  cursor:pointer;
-  box-shadow:0 3px 10px rgba(0,0,0,0.15);
-  font-weight:600;
+padding:12px 22px;
+background:white;
+border-radius:25px;
+cursor:pointer;
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
+font-weight:bold;
 }
 
-.activeTab{background:#dd2476;color:white}
+.activeTab{
+background:#dd2476;
+color:white;
+}
 
-.dark .tab{background:#1e293b;color:white}
+.dark .tab{
+background:#1e293b;
+color:white;
+}
 
-/* Layout */
 .container{
-  display:grid;
-  grid-template-columns:300px 1fr;
-  gap:20px;
-  padding:20px;
+display:grid;
+grid-template-columns:300px 1fr;
+gap:20px;
+padding:20px;
 }
 
-.chapterBox,.notes{
-  background:white;
-  border-radius:12px;
-  padding:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.1);
-  height:70vh;
-  overflow-y:auto;
+.chapterBox,
+.notes{
+background:white;
+border-radius:12px;
+padding:20px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+height:70vh;
+overflow-y:auto;
 }
 
-.dark .chapterBox,.dark .notes{
-  background:#1e293b;
-  color:white;
+.dark .chapterBox,
+.dark .notes{
+background:#1e293b;
+color:white;
 }
 
 .chapterBtn{
-  display:block;
-  width:100%;
-  padding:10px;
-  margin-bottom:10px;
-  border:none;
-  background:#ffe4ec;
-  border-radius:8px;
-  cursor:pointer;
-  text-align:left;
+display:block;
+width:100%;
+padding:12px;
+margin-bottom:10px;
+border:none;
+background:#ffe4ec;
+border-radius:8px;
+cursor:pointer;
+text-align:left;
+font-weight:600;
 }
 
 .dark .chapterBtn{
-  background:#334155;
-  color:white;
+background:#334155;
+color:white;
 }
 
-.downloadBtn{margin-top:15px}
-
-/* Mobile */
-@media(max-width:900px){
-  .container{grid-template-columns:1fr}
-  .searchBox{width:100%}
-  header{font-size:18px}
+iframe{
+width:100%;
+height:600px;
+border:none;
 }
 
-/* Fullscreen */
 .fullscreenPDF{
- position:fixed;
- top:0;
- left:0;
- width:100vw;
- height:100vh;
- background:#fff;
- z-index:9999;
- padding:10px;
+position:fixed;
+top:0;
+left:0;
+width:100vw;
+height:100vh;
+background:white;
+z-index:9999;
+padding:10px;
 }
-.fullscreenPDF iframe{height:90vh !important}
 
-/* Footer */
-footer{
-  background:#111;
-  color:#ddd;
-  text-align:center;
-  padding:25px;
-  margin-top:30px;
+.fullscreenPDF iframe{
+height:90vh !important;
 }
+
+footer{
+background:#111;
+color:#ddd;
+text-align:center;
+padding:25px;
+margin-top:30px;
+}
+
+@media(max-width:900px){
+
+.container{
+grid-template-columns:1fr;
+}
+
+.searchBox{
+width:100%;
+}
+
+.notes iframe{
+display:none;
+}
+
+}
+
 </style>
 </head>
 
@@ -148,179 +188,203 @@ footer{
 <header>📕 Class 10 Hindi Course B Notes Hub</header>
 
 <div class="topbar">
-  <input type="text" id="search" class="searchBox" placeholder="Search chapter...">
-  <button class="btn" onclick="toggleDark()">🌙 Dark Mode</button>
+
+<input type="text" id="search" class="searchBox" placeholder="Search chapter...">
+
+<button class="btn themeBtn" onclick="toggleDark()">
+🌙 Theme
+</button>
+
 </div>
 
 <div class="tabs">
-  <div class="tab activeTab" onclick="showSection('sparsh',this)">Sparsh</div>
-  <div class="tab" onclick="showSection('sanchayan',this)">Sanchayan</div>
-  <div class="tab" onclick="showSection('grammar',this)">Grammar</div>
-  <div class="tab" onclick="showSection('samplepapers',this)">Sample Papers</div>
+
+<div class="tab activeTab" onclick="showSection('sparsh',this)">
+SPARSH
 </div>
 
+<div class="tab" onclick="showSection('sanchayan',this)">
+SANCHAYAN
+</div>
+
+<div class="tab" onclick="showSection('samplepapers',this)">
+SAMPLE PAPERS
+</div>
+
+</div>
 
 <div class="container">
-  <div class="chapterBox" id="chapters"></div>
-  <div class="notes" id="notes">
-    <h2>Welcome 👋</h2>
-    <p>Select a chapter to view notes.</p>
-  </div>
+
+<div class="chapterBox" id="chapters"></div>
+
+<div class="notes" id="notes">
+<h2>Welcome 👋</h2>
+<p>Select a chapter</p>
+</div>
+
 </div>
 
 <script>
 
-const data = {
+const data={
 
 sparsh:{
-
-/* ===== गद्य खंड (Prose) ===== */
-
-"1. बड़े भाई साहब – प्रेमचंद":"pdf/sparsh-1.pdf",
-"2. डायरी का एक पन्ना – सीताराम सेकसरिया":"pdf/sparsh-2.pdf",
-"3. तताँरा-वामीरो कथा – लीलाधर मंडलोई":"pdf/sparsh-3.pdf",
-"4. तीसरी कसम के शिल्पकार शैलेन्द्र – प्रह्लाद अग्रवाल":"pdf/sparsh-4.pdf",
-"5. अब कहाँ दूसरे के दुख से दुखी होने वाले – नरेन्द्र कोहली":"pdf/sparsh-5.pdf",
-"6. पतझर में टूटी पत्तियाँ – रवीन्द्र कालिया":"pdf/sparsh-6.pdf",
-"7. कारतूस – जयशंकर प्रसाद":"pdf/sparsh-7.pdf",
-
-/* ===== पद्य खंड (Poetry) ===== */
-
-"8. साखी – कबीर":"pdf/sparsh-8.pdf",
-"9. मीरा के पद – मीराबाई":"pdf/sparsh-9.pdf",
-"10. मनुष्यता – मैथिलीशरण गुप्त":"pdf/sparsh-10.pdf",
-"11. पर्वत प्रदेश में पावस – सुमित्रानंदन पंत":"pdf/sparsh-11.pdf",
-"12. तोप – सर्वेश्वर दयाल सक्सेना":"pdf/sparsh-12.pdf",
-"13. कर चले हम फ़िदा – कैफ़ी आज़मी":"pdf/sparsh-13.pdf",
-"14. आत्मत्राण – जयशंकर प्रसाद":"pdf/sparsh-14.pdf"
-
-
+"Chapter 1":"pdf/1.pdf",
+"Chapter 2":"pdf/2.pdf"
 },
-
 
 sanchayan:{
-"हरिहर काका":"pdf/sanchayan-1.pdf",
-"सपनों के से दिन":"pdf/sanchayan-2.pdf",
-"टोपी शुक्ला":"pdf/sanchayan-3.pdf"
-},
-
-grammar:{
-
-"पदबंध (Yet not uploaded)":"pdf/grammar-phrases.pdf",
-"रचना के आधार पर वाक्य रूपांतरण (Yet not uploaded)":"pdf/grammar-sentence-transformation.pdf",
-"समास (Yet not uploaded)":"pdf/grammar-compound-words.pdf",
-"मुहावरे (Yet not uploaded)":"pdf/grammar-idioms.pdf"
-
+"Chapter A":"pdf/a.pdf"
 },
 
 samplepapers:{
-"Nodia 30 Sample Paper Set":"pdf/nodia-25-26.pdf",
-"CBSE Sample Paper 2026 (Yet not uploaded)":"pdf/sample-2026.pdf",
-"CBSE Sample Paper 2025 (Yet not uploaded)":"pdf/sample-2025.pdf",
-"CBSE Sample Paper 2024 (Yet not uploaded)":"pdf/sample-2024.pdf",
-"Practice Paper 1 (Yet not uploaded)":"pdf/practice-1.pdf",
-"Practice Paper 2 (Yet not uploaded)":"pdf/practice-2.pdf"
+"Sample 1":"pdf/s1.pdf"
 }
-
 
 }
 
-let currentSection="sparsh";
-const chapterBox=document.getElementById("chapters");
-const notesBox=document.getElementById("notes");
+let currentSection="sparsh"
+
+const chapterBox=document.getElementById("chapters")
+const notesBox=document.getElementById("notes")
 
 function showSection(section,el){
-currentSection=section;
-document.querySelectorAll(".tab").forEach(t=>t.classList.remove("activeTab"));
-el.classList.add("activeTab");
-loadChapters();
+
+currentSection=section
+
+document.querySelectorAll(".tab")
+.forEach(t=>t.classList.remove("activeTab"))
+
+el.classList.add("activeTab")
+
+loadChapters()
+
 }
 
 function loadChapters(){
-chapterBox.innerHTML="";
+
+chapterBox.innerHTML=""
+
 Object.keys(data[currentSection]).forEach(ch=>{
-let btn=document.createElement("button");
-btn.className="chapterBtn";
-btn.innerText=ch;
-btn.onclick=()=>showNotes(ch,currentSection);
-chapterBox.appendChild(btn);
-});
+
+let btn=document.createElement("button")
+
+btn.className="chapterBtn"
+
+btn.innerText=ch
+
+btn.onclick=()=>showNotes(ch,currentSection)
+
+chapterBox.appendChild(btn)
+
+})
+
 }
 
 function showNotes(ch,section){
-let pdfPath=data[section][ch];
 
-let isMobile = window.innerWidth < 900;
+let pdf=data[section][ch]
 
-if(isMobile){
-  notesBox.innerHTML=`
-  <h2>${ch}</h2>
-  <h4>${section.toUpperCase()}</h4>
-  <br>
-  <a class="btn" href="${pdfPath}" target="_blank">📖 Open PDF</a>
-  <br><br>
-  <a class="btn downloadBtn" href="${pdfPath}" download>⬇ Download PDF</a>
-  `;
+let mobile=window.innerWidth<900
+
+if(mobile){
+
+notesBox.innerHTML=`
+
+<h2>${ch}</h2>
+
+<a class="btn" href="${pdf}" target="_blank">
+Open PDF
+</a>
+
+<br><br>
+
+<a class="btn" href="${pdf}" download>
+Download
+</a>
+
+`
+
 }else{
-  notesBox.innerHTML=`
-  <h2>${ch}</h2>
-  <h4>${section.toUpperCase()}</h4>
 
-  <div id="pdfContainer">
-  <button class="btn" onclick="toggleFullscreen()">📄 Full Screen</button>
-  <br><br>
-  <iframe src="${pdfPath}" width="100%" height="600px"></iframe>
-  </div>
+notesBox.innerHTML=`
 
-  <br>
-  <a class="btn downloadBtn" href="${pdfPath}" download>⬇ Download PDF</a>
-  `;
-}
-}
+<h2>${ch}</h2>
 
+<div id="pdfContainer">
 
-function toggleFullscreen(){
-let elem=document.getElementById("pdfContainer");
-elem.classList.toggle("fullscreenPDF");
-if(!document.fullscreenElement){
-elem.requestFullscreen().catch(()=>{});
-}else{
-document.exitFullscreen();
-}
+<iframe src="${pdf}"></iframe>
+
+</div>
+
+<br>
+
+<a class="btn" href="${pdf}" download>
+Download
+</a>
+
+`
+
 }
 
-document.getElementById("search").addEventListener("input",function(e){
-let term=e.target.value.toLowerCase();
-chapterBox.innerHTML="";
-if(term===""){loadChapters();return;}
-for(let section in data){
-for(let chapter in data[section]){
-if(chapter.toLowerCase().includes(term)){
-let btn=document.createElement("button");
-btn.className="chapterBtn";
-btn.innerText=`${chapter} (${section})`;
-btn.onclick=()=>showNotes(chapter,section);
-chapterBox.appendChild(btn);
 }
-}
-}
-});
 
 function toggleDark(){
-document.body.classList.toggle("dark");
+
+document.body.classList.toggle("dark")
+
 }
 
-loadChapters();
+loadChapters()
 
 </script>
 
+
+<!-- INSPECT DISABLE -->
+
+<script>
+
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+document.addEventListener("keydown", function(e) {
+
+if (e.key === "F12") e.preventDefault();
+
+if (e.ctrlKey && e.shiftKey && e.key === "I") e.preventDefault();
+
+if (e.ctrlKey && e.shiftKey && e.key === "C") e.preventDefault();
+
+if (e.ctrlKey && e.shiftKey && e.key === "J") e.preventDefault();
+
+if (e.ctrlKey && e.key === "U") e.preventDefault();
+
+if (e.ctrlKey && e.key === "S") e.preventDefault();
+
+});
+
+document.addEventListener("selectstart", e => e.preventDefault());
+
+document.addEventListener("dragstart", e => e.preventDefault());
+
+setInterval(function(){
+
+let w = window.outerWidth - window.innerWidth > 160;
+let h = window.outerHeight - window.innerHeight > 160;
+
+if (w || h) {
+document.body.innerHTML="Inspect not allowed";
+}
+
+},1000);
+
+</script>
+
+
 <footer>
-<h3>📞 Contact</h3>
-<p>Email: rishabhvachheta@gmail.com</p>
-<p>Phone: +91 6358849299</p>
-<br>
-<p>© 2026 Hindi Course B Notes Hub</p>
-<p>Made with ❤️ by Rishabh Vachheta</p>
+
+Contact<br>
+rishabhvachheta@gmail.com
+
 </footer>
 
 </body>
