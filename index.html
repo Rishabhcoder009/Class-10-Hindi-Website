@@ -214,29 +214,23 @@ const data = {
 
 sparsh:{
 
-/* ===== गद्य खंड (Prose) ===== */
-
 "1. बड़े भाई साहब – प्रेमचंद":"pdf/sparsh-1.pdf",
 "2. डायरी का एक पन्ना – सीताराम सेकसरिया":"pdf/sparsh-2.pdf",
 "3. तताँरा-वामीरो कथा – लीलाधर मंडलोई":"pdf/sparsh-3.pdf",
-"4. तीसरी कसम के शिल्पकार शैलेन्द्र – प्रह्लाद अग्रवाल":"pdf/sparsh-4.pdf",
-"5. अब कहाँ दूसरे के दुख से दुखी होने वाले – नरेन्द्र कोहली":"pdf/sparsh-5.pdf",
-"6. पतझर में टूटी पत्तियाँ – रवीन्द्र कालिया":"pdf/sparsh-6.pdf",
-"7. कारतूस – जयशंकर प्रसाद":"pdf/sparsh-7.pdf",
-
-/* ===== पद्य खंड (Poetry) ===== */
+"4. तीसरी कसम के शिल्पकार शैलेन्द्र":"pdf/sparsh-4.pdf",
+"5. अब कहाँ दूसरे के दुख से दुखी होने वाले":"pdf/sparsh-5.pdf",
+"6. पतझर में टूटी पत्तियाँ":"pdf/sparsh-6.pdf",
+"7. कारतूस":"pdf/sparsh-7.pdf",
 
 "8. साखी – कबीर":"pdf/sparsh-8.pdf",
-"9. मीरा के पद – मीराबाई":"pdf/sparsh-9.pdf",
-"10. मनुष्यता – मैथिलीशरण गुप्त":"pdf/sparsh-10.pdf",
-"11. पर्वत प्रदेश में पावस – सुमित्रानंदन पंत":"pdf/sparsh-11.pdf",
-"12. तोप – सर्वेश्वर दयाल सक्सेना":"pdf/sparsh-12.pdf",
-"13. कर चले हम फ़िदा – कैफ़ी आज़मी":"pdf/sparsh-13.pdf",
-"14. आत्मत्राण – जयशंकर प्रसाद":"pdf/sparsh-14.pdf"
-
+"9. मीरा के पद":"pdf/sparsh-9.pdf",
+"10. मनुष्यता":"pdf/sparsh-10.pdf",
+"11. पर्वत प्रदेश में पावस":"pdf/sparsh-11.pdf",
+"12. तोप":"pdf/sparsh-12.pdf",
+"13. कर चले हम फ़िदा":"pdf/sparsh-13.pdf",
+"14. आत्मत्राण":"pdf/sparsh-14.pdf"
 
 },
-
 
 sanchayan:{
 "हरिहर काका":"pdf/sanchayan-1.pdf",
@@ -244,14 +238,9 @@ sanchayan:{
 "टोपी शुक्ला":"pdf/sanchayan-3.pdf"
 },
 
-
 samplepapers:{
-"Nodia 30 Sample Paper Set":"pdf/nodia-25-26.pdf",
-"CBSE Sample Paper 2026 (Yet not uploaded)":"pdf/sample-2026.pdf",
-"CBSE Sample Paper 2025 (Yet not uploaded)":"pdf/sample-2025.pdf",
-"CBSE Sample Paper 2024 (Yet not uploaded)":"pdf/sample-2024.pdf",
-"Practice Paper 1 (Yet not uploaded)":"pdf/practice-1.pdf",
-"Practice Paper 2 (Yet not uploaded)":"pdf/practice-2.pdf"
+"Nodia Sample":"pdf/nodia-25-26.pdf",
+"Sample 2026":"pdf/sample-2026.pdf"
 }
 
 }
@@ -260,6 +249,7 @@ let currentSection="sparsh"
 
 const chapterBox=document.getElementById("chapters")
 const notesBox=document.getElementById("notes")
+
 
 function showSection(section,el){
 
@@ -273,6 +263,7 @@ el.classList.add("activeTab")
 loadChapters()
 
 }
+
 
 function loadChapters(){
 
@@ -295,51 +286,41 @@ chapterBox.appendChild(btn)
 }
 
 
+/* ✅ MOBILE SAFE PDF FUNCTION */
+
 function showNotes(ch,section){
 
 let pdf=data[section][ch]
 
-let mobile=window.innerWidth<700
+notesBox.innerHTML=""
 
-if(mobile){
+let title=document.createElement("h2")
+title.innerText=ch
 
-notesBox.innerHTML=`
+let container=document.createElement("div")
+container.id="pdfContainer"
 
-<h2>${ch}</h2>
+let embed=document.createElement("embed")
+embed.src=pdf
+embed.type="application/pdf"
+embed.style.width="100%"
+embed.style.height="65vh"
 
-<a class="btn" href="${pdf}" target="_blank">
-Open PDF
-</a>
+let br=document.createElement("br")
+let br2=document.createElement("br")
 
-<br><br>
+let download=document.createElement("a")
+download.className="btn"
+download.href=pdf
+download.target="_blank"
+download.innerText="Open / Download PDF"
 
-<a class="btn" href="${pdf}" download>
-Download
-</a>
+container.appendChild(embed)
 
-`
-
-}else{
-
-let fullURL=location.origin+"/"+pdf
-
-notesBox.innerHTML=`
-
-<h2>${ch}</h2>
-
-<iframe
-src="https://docs.google.com/gview?embedded=1&url=${fullURL}">
-</iframe>
-
-<br><br>
-
-<a class="btn" href="${pdf}" download>
-Download
-</a>
-
-`
-
-}
+notesBox.appendChild(title)
+notesBox.appendChild(container)
+notesBox.appendChild(br)
+notesBox.appendChild(download)
 
 }
 
@@ -353,12 +334,6 @@ document.body.classList.toggle("dark")
 loadChapters()
 
 </script>
-
-
-
-<!-- INSPECT SAFE -->
-
-<script>
 
 document.addEventListener("contextmenu",e=>e.preventDefault());
 
@@ -390,3 +365,4 @@ if(e.ctrlKey&&e.key==="U") e.preventDefault();
 </footer>
 </body>
 </html>
+
