@@ -7,23 +7,12 @@
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Segoe UI,Arial,sans-serif
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial,sans-serif}
 
-body{
-background:#f4f6fb;
-color:#222;
-transition:0.3s
-}
+body{background:#f4f6fb;color:#222;transition:0.3s}
+.dark{background:#0f172a;color:#e5e7eb}
 
-.dark{
-background:#0f172a;
-color:#e5e7eb
-}
+/* HEADER */
 
 header{
 background:linear-gradient(120deg,#ff512f,#dd2476);
@@ -33,6 +22,8 @@ padding:25px;
 font-size:26px;
 font-weight:bold;
 }
+
+/* TOP BAR */
 
 .topbar{
 display:flex;
@@ -67,6 +58,8 @@ font-size:16px;
 padding:12px 20px;
 }
 
+/* TABS */
+
 .tabs{
 display:flex;
 justify-content:center;
@@ -94,6 +87,8 @@ background:#1e293b;
 color:white;
 }
 
+/* LAYOUT */
+
 .container{
 display:grid;
 grid-template-columns:300px 1fr;
@@ -101,8 +96,7 @@ gap:20px;
 padding:20px;
 }
 
-.chapterBox,
-.notes{
+.chapterBox,.notes{
 background:white;
 border-radius:12px;
 padding:20px;
@@ -111,8 +105,7 @@ height:70vh;
 overflow-y:auto;
 }
 
-.dark .chapterBox,
-.dark .notes{
+.dark .chapterBox,.dark .notes{
 background:#1e293b;
 color:white;
 }
@@ -135,26 +128,27 @@ background:#334155;
 color:white;
 }
 
+/* PDF */
+
 iframe{
 width:100%;
 height:600px;
 border:none;
 }
 
-.fullscreenPDF{
-position:fixed;
-top:0;
-left:0;
-width:100vw;
-height:100vh;
-background:white;
-z-index:9999;
-padding:10px;
+/* MOBILE FIX */
+
+@media(max-width:900px){
+
+.container{grid-template-columns:1fr}
+
+.searchBox{width:100%}
+
+.notes iframe{display:none}
+
 }
 
-.fullscreenPDF iframe{
-height:90vh !important;
-}
+/* FOOTER */
 
 footer{
 background:#111;
@@ -162,22 +156,6 @@ color:#ddd;
 text-align:center;
 padding:25px;
 margin-top:30px;
-}
-
-@media(max-width:900px){
-
-.container{
-grid-template-columns:1fr;
-}
-
-.searchBox{
-width:100%;
-}
-
-.notes iframe{
-display:none;
-}
-
 }
 
 </style>
@@ -191,11 +169,10 @@ display:none;
 
 <input type="text" id="search" class="searchBox" placeholder="Search chapter...">
 
-<button class="btn themeBtn" onclick="toggleDark()">
-🌙 Theme
-</button>
+<button class="btn themeBtn" onclick="toggleDark()">🌙 Theme</button>
 
 </div>
+
 
 <div class="tabs">
 
@@ -213,6 +190,8 @@ SAMPLE PAPERS
 
 </div>
 
+
+
 <div class="container">
 
 <div class="chapterBox" id="chapters"></div>
@@ -223,6 +202,7 @@ SAMPLE PAPERS
 </div>
 
 </div>
+
 
 <script>
 
@@ -311,13 +291,9 @@ notesBox.innerHTML=`
 
 <h2>${ch}</h2>
 
-<div id="pdfContainer">
-
 <iframe src="${pdf}"></iframe>
 
-</div>
-
-<br>
+<br><br>
 
 <a class="btn" href="${pdf}" download>
 Download
@@ -340,44 +316,35 @@ loadChapters()
 </script>
 
 
-<!-- INSPECT DISABLE -->
+
+<!-- SAFE INSPECT DISABLE -->
 
 <script>
 
-document.addEventListener("contextmenu", e => e.preventDefault());
+document.addEventListener("contextmenu",e=>e.preventDefault());
 
-document.addEventListener("keydown", function(e) {
+document.addEventListener("keydown",function(e){
 
-if (e.key === "F12") e.preventDefault();
+if(e.key==="F12") e.preventDefault();
 
-if (e.ctrlKey && e.shiftKey && e.key === "I") e.preventDefault();
+if(e.ctrlKey&&e.shiftKey&&e.key==="I") e.preventDefault();
 
-if (e.ctrlKey && e.shiftKey && e.key === "C") e.preventDefault();
+if(e.ctrlKey&&e.shiftKey&&e.key==="C") e.preventDefault();
 
-if (e.ctrlKey && e.shiftKey && e.key === "J") e.preventDefault();
+if(e.ctrlKey&&e.shiftKey&&e.key==="J") e.preventDefault();
 
-if (e.ctrlKey && e.key === "U") e.preventDefault();
+if(e.ctrlKey&&e.key==="U") e.preventDefault();
 
-if (e.ctrlKey && e.key === "S") e.preventDefault();
+if(e.ctrlKey&&e.key==="S") e.preventDefault();
 
 });
 
-document.addEventListener("selectstart", e => e.preventDefault());
+document.addEventListener("selectstart",e=>e.preventDefault());
 
-document.addEventListener("dragstart", e => e.preventDefault());
-
-setInterval(function(){
-
-let w = window.outerWidth - window.innerWidth > 160;
-let h = window.outerHeight - window.innerHeight > 160;
-
-if (w || h) {
-document.body.innerHTML="Inspect not allowed";
-}
-
-},1000);
+document.addEventListener("dragstart",e=>e.preventDefault());
 
 </script>
+
 
 
 <footer>
